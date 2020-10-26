@@ -73,7 +73,7 @@
     <!--============= Banner Section Ends Here =============-->
 
     <!--============= Pricing Section Starts Here =============-->
-    <section class="pricing-section padding-top oh padding-bottom pb-lg-half bg_img pos-rel" data-background="" id="pricing">
+    <!-- <section class="pricing-section padding-top oh padding-bottom pb-lg-half bg_img pos-rel" data-background="./assets/images/bg/pricing-bg.jpg" id="pricing"> -->
         <div class="top-shape d-none d-md-block">
             <img src="assets/css/img/top-shape.png" alt="css">
         </div>
@@ -107,6 +107,7 @@
         <div class="container">
             <div class="section-header cl-white">
                 <h4 class="cate">INVESTMENTS</h4>
+                <BR>
                 <!-- <h2 class="title">Simple Pricing Plans</h2>
                 <p>
                     Mosto has plans, from free to paid, that scale with your needs. Subscribe to a plan that fits the size of your business.
@@ -127,10 +128,10 @@
                                         <li>Period: ∞ </li>
                                         <li>You win every second</li>
                                         <li>Balance in my wallet</li>
-                                        <li>dato</li>
-                                        <input type="text" class="form-control" id="monto" value="50">
+                                        <li><spam id="balance">0</spam></li>
+                                        <input type="text" class="form-control" id="value" value="50">
                                     </ul>
-                                    <a href="#0" class="get-button">INVEST<i class="flaticon-right"></i></a>
+                                    <a href="#" id="commit" class="get-button">INVEST<i class="flaticon-right"></i></a>
                                 </div>
                                 <div class="pricing-item-2">
                                     <h5 class="cate">DETAILS</h5>
@@ -141,11 +142,12 @@
                                     <span class="info">details of your investment</span>
                                     <ul class="pricing-content-3">
                                         <li>Your Investments</li>
-                                        <li>dato</li>
+                                        <li><spam id="invest">0</spam></li>
                                         <li>Available to withdraw</li>
-                                        <li>dato</li>
+                                        <li><spam id="profit">0</spam></li>
                                         <li>1-3 TRX transaction fee will be applied</li>
                                     </ul>
+
                                 </div>
                                 <div class="pricing-item-2">
                                     <h5 class="cate">WITHDRAW</h5>
@@ -157,15 +159,16 @@
                                     <ul class="pricing-content-3">
                                         <li>Total Payout</li>
                                         <li>Referral Rewards Included</li>
-                                        <li>dato</li>
+                                        <li><spam id="withdwn">0</spam></li>
                                         <li>Interface Customization</li>
                                         <li>24/7 Support</li>
                                     </ul>
-                                    <a href="#0" class="get-button">WITHDRAW<i class="flaticon-right"></i></a>
+                                    <a href="#" id="withdraw" class="get-button">WITHDRAW<i class="flaticon-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -173,7 +176,7 @@
     <!--============= Pricing Section Ends Here =============-->
 
     <!--============= To Access Section Starts Here =============-->
-    <section class="to-access-section padding-top padding-bottom bg_img mb-lg-5" data-background="" id="feature">
+    <!-- <section class="to-access-section padding-top padding-bottom bg_img mb-lg-5" data-background="./assets/images/feature/to-access-bg.png" id="feature"> -->
         <div class="container">
             <div class="section-header">
                 <h5 class="cate">The first 100% sustainable smart contract</h5>
@@ -337,6 +340,12 @@
                             <h4 ALIGN=center>Referrals Level 5</h4>
                             <p></p>
                             <h3 ALIGN=center>1%</h3>
+                            <p></p>
+                            <h3 ALIGN=center>Your Referral Link</h3>
+                            <p></p>
+                            <h5 ALIGN=center id="Referral"></h5>
+                            <p></p>
+                            <button ALIGN=center type="button" class="button-4" onclick="copyRef('Referral')">Copy</button>
                         </div>
                         <!-- <a href="#0" class="get-button">get free  trial <i class="flaticon-right"></i></a> -->
                     </div>
@@ -566,7 +575,21 @@
     <script src="./assets/js/owl.min.js"></script>
     <script src="./assets/js/counterup.min.js"></script>
     <script src="./assets/js/paroller.js"></script> -->
-    <script src="assets/js/minified.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/jsa/jquery-2.1.4.min.js"></script>
+    <script src="./assets/jsa/tronweb.js"></script>
+    <script src="./assets/jsa/elite-config.js"></script>
+    <script src="./assets/jsa/app.js"></script>
+    <script src="./assets/js/minified.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <!-- <script type="text/javascript">
+        var button = document.getElementById("copyID"),
+            input = document.getElementById("Referral");
+
+        button.addEventListener("click", function(event) {
+            event.preventDefault();
+            input.select();
+            document.execCommand("copy");
+        });
+    </script> -->
 </body>
 </html>

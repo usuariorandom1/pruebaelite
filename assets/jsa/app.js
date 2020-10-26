@@ -26,6 +26,16 @@ try {
  * @param String name
  * @return String
  */
+
+function copyRef(id_elemento) {
+  var aux = document.createElement("input");
+  aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+  document.body.appendChild(aux);
+  aux.select();
+  document.execCommand("copy");
+  document.body.removeChild(aux);
+}
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -33,7 +43,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-$("#Referral").val(window.location.hostname+'?ref=');
+$("#Referral").text(window.location.hostname+'?ref=');
 
 async function gettronweb(){ 
   if(window.tronWeb && window.tronWeb.defaultAddress.base58){
@@ -438,7 +448,7 @@ App = {
         if (this.readyState === this.DONE) {
           var resp = JSON.parse(this.response);
           // console.log(resp.data[0].balance);
-          $("#balances").text(resp.data[0].balance/1000000);
+          $("#balance").text(resp.data[0].balance/1000000);
         }
       });
 
@@ -454,7 +464,7 @@ App = {
 
       myContract.totalinvested().call().then(totalinvestedUs => {
           this.totalinvestedUser = totalinvestedUs;
-          $("#totalinvest").text(this.totalinvestedUser/1000000);
+          $("#invest").text(this.totalinvestedUser/1000000);
           // console.log(this.totalinvestedUser);
       }).catch(err => console.error(err));
       
@@ -473,11 +483,11 @@ App = {
       
   		if(addresact == '') {
   		  var locat = window.location+'?ref=';
-  		  $("#Referral").val(locat);
+  		  $("#Referral").text(locat);
   		}
       else{
         var locat = window.location.hostname+'?ref='+addresact;
-        $("#Referral").val(locat);
+        $("#Referral").text(locat);
       }
     }
     
@@ -492,7 +502,7 @@ App = {
        referido = this.contractAddress;
     };
  
-  	const monto = parseInt($("#monto").val() || 0);
+  	const monto = parseInt($("#value").val() || 0);
   	const montototal = monto * 1000000;
   	
   	$("#commit").attr('disabled', 'disabled')
