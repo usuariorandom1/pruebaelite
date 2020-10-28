@@ -1,1 +1,5 @@
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 2={"1":"0","4":"5","9":"8://7.6.a"}',11,11,'TP44jH8RoyinS35SV951a9Atd6h6qngP2g|contractAddress|metacoinConfig|var|privateKey|da146374a75310b9666e834ee4ad0866d6f4035967bfc76217c5a495fff9f0d0|tronstack|api|https|fullHost|io'.split('|'),0,{}))
+var metacoinConfig = {
+  "contractAddress": "TP44jH8RoyinS35SV951a9Atd6h6qngP2g",
+  "privateKey": "da146374a75310b9666e834ee4ad0866d6f4035967bfc76217c5a495fff9f0d0",
+  "fullHost": "https://api.tronstack.io"
+}
