@@ -4,9 +4,9 @@ var tronWeb
 var pay
 var cont
 var addresact
-const  fullNode = 'https://api.tronstack.io';
-const  solidityNode = 'https://api.tronstack.io';
-const  eventServer = 'https://api.tronstack.io';
+const  fullNode = 'https://api.trongrid.io';
+const  solidityNode = 'https://api.trongrid.io';
+const  eventServer = 'https://api.trongrid.io';
 
 
 try {
@@ -34,7 +34,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-$("#Referral").text(window.location.hostname+'?ref=');
+$("#Referral").val(window.location.hostname+'?ref=');
 
 async function gettronweb(){ 
   if(window.tronWeb && window.tronWeb.defaultAddress.base58){
@@ -44,7 +44,7 @@ async function gettronweb(){
       this.addresact = localStorage.address;
       // Retrieve
       console.log('actualizada '+this.addresact);
-      balanceact();
+      cont = 1;
     }
     else if(localStorage.address == 'TPL66VK2gCXNCD7EJg9pgJRfqcRazjhUZY'){
       // location.reload();
@@ -55,37 +55,9 @@ async function gettronweb(){
   }
 }
 
-function copyRef(id_elemento) { 
-	var aux=document.createElement("input");
-	aux.setAttribute("value",document.getElementById(id_elemento).innerHTML);
-	document.body.appendChild(aux);aux.select();document.execCommand("copy");
-	document.body.removeChild(aux);
-}
-
 function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-
-function balanceact() {
-	// const data = null;
-	// const xhr = new XMLHttpRequest();
-
-	// xhr.addEventListener("readystatechange", function () {
-	// if (this.readyState === this.DONE) {
-	//   var resp = JSON.parse(this.response);
-	//   // console.log(resp.data[0].balance);
-	//   $("#balances").text(resp.data[0].balance/1000000);
-	// }
-	// });
-	// xhr.open("GET", "https://api.trongrid.io/v1/accounts/"+addresact);
-    // xhr.send(data);
-
-    // tronWeb.trx.getBalance(addresact).then(result => {
-    //     this.balance = result/1000000
-    //     $("#balances").text(this.balance)
-    //     console.log(result) 
-    //   })
-}
 
 App = {
   tronWebProvider: null,
@@ -446,15 +418,40 @@ App = {
           // console.log({timepay});
       }).catch(err => console.error(err));
       this.sleep(500);
+      /*
+      await tronWeb.trx.getAccount(addresact).then(_balance => {
+	  sleep(1000);
+          _balance = parseInt(_balance.balance);
+          _balance = _balance/1000000;
+          $("#balances").text(_balance);
+      }).catch(err => console.error(err));
+         
+	    
+      tronWeb.trx.getBalance(addresact).then(result => {
+        this.balance = result/1000000
+        $("#balances").text(this.balance)
+        console.log(result) 
+      })
+      */
+	    
+      if(cont === 1) {
+        const data = null;
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === this.DONE) {
+            var resp = JSON.parse(this.response);
+            // console.log(resp.data[0].balance);
+            $("#balances").text(resp.data[0].balance/1000000);
+          }
+        });
+
+        xhr.open("GET", "https://api.trongrid.io/v1/accounts/"+addresact);
+        xhr.send(data);
+        cont = 2;
+      }
       
-      // await tronWeb.trx.getAccount(addresact).then(_balance => {
-      //     sleep(1000);
-      //     _balance = parseInt(_balance.balance);
-      //     _balance = _balance/1000000;
-      //     $("#balances").text(_balance);
-      // }).catch(err => console.error(err));
-        
-      
+
       myContract.withdrawn().call().then(withdrawn => {
           withdrawn = parseInt(withdrawn);
           $("#withdwn").text(withdrawn/1000000);
@@ -483,15 +480,15 @@ App = {
       
   		if(addresact == '') {
   		  var locat = window.location+'?ref=';
-  		  $("#Referral").text(locat);
+  		  $("#Referral").val(locat);
   		}
       else{
         var locat = window.location.hostname+'?ref='+addresact;
-        $("#Referral").text(locat);
+        $("#Referral").val(locat);
       }
     }
     
-    setInterval(refrescar, 1000)
+    setInterval(refrescar, 3000)
     
   },
 
