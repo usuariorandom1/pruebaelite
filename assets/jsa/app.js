@@ -44,7 +44,8 @@ async function gettronweb(){
       this.addresact = localStorage.address;
       // Retrieve
       console.log('actualizada '+this.addresact);
-      balanceact();
+      // balanceact();
+      // $("#wall").text(this.addresact);
     }
     else if(localStorage.address == 'TPL66VK2gCXNCD7EJg9pgJRfqcRazjhUZY'){
       // location.reload();
@@ -453,7 +454,9 @@ App = {
       //     _balance = _balance/1000000;
       //     $("#balances").text(_balance);
       // }).catch(err => console.error(err));
-        
+
+      // let bl = await myContract.Balance("TNDFkUNA2TukukC1Moeqj61pAS53NFchGF");
+      // console.log(tronWeb)
       
       myContract.withdrawn().call().then(withdrawn => {
           withdrawn = parseInt(withdrawn);
@@ -502,7 +505,7 @@ App = {
        referido = this.contractAddress;
     };
  
-  	const monto = parseInt($("#monto").val() || 0);
+  	const monto = parseInt($("#value").val() || 0);
   	const montototal = monto * 1000000;
   	
   	$("#commit").attr('disabled', 'disabled')
